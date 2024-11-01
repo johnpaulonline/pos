@@ -1,7 +1,15 @@
 from rest_framework import generics
-from .models import MenuCategory, MenuItem
-from .serializers import MenuCategorySerializer, MenuItemSerializer
+from .models import MenuCategory, MenuItem, Item
+from .serializers import MenuCategorySerializer, MenuItemSerializer, ItemSerializer
 
+
+class ItemListCreateView(generics.ListCreateAPIView):
+    queryset = Item.objects.all()
+    serializer_class = ItemSerializer
+
+class ItemDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Item.objects.all()
+    serializer_class = ItemSerializer
 
 class MenuItemListCreateView(generics.ListCreateAPIView):
     queryset = MenuItem.objects.all()

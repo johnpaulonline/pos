@@ -1,7 +1,11 @@
-from .models import MenuCategory, MenuItem
+from .models import MenuCategory, MenuItem, Item
 from rest_framework import serializers
 
-
+class ItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Item
+        fields = ['id', 'name', 'category', 'price_retail', 'price_wholesale', 'stock_quantity', 'sku', 'created_at', 'updated_at']
+        
 class MenuCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = MenuCategory
